@@ -15,8 +15,6 @@ class Produk {
     }
     }
 
-
-
 // $produk1 = new Produk();
 // $produk1 -> judul = "naruto";
 // var_dump($produk1); 
