@@ -6,21 +6,17 @@ class Produk {
      public $judul,
             $penulis,
             $penerbit,
-            $harga,
-            $jmlhalaman,
-            $waktumain;
+            $harga;
            
 
     public function __construct ( $judul = "judul",
      $penulis = "penulis" , $penerbit = "penerbit", 
-     $harga = 0, $jmlhalaman = 0, $waktumain = 0, ) 
+     $harga = 0 ) 
    {
         $this->judul = $judul;
         $this->penulis = $penulis;
         $this->penerbit = $penerbit;
         $this->harga = $harga;
-        $this->jmlhalaman = $jmlhalaman;
-        $this->waktumain = $waktumain;
     }
 
     public function getLabel() {
@@ -29,7 +25,7 @@ class Produk {
  
  public function getinfoproduk() {
     // komik : naruto | masasi kisimoto, shonen jump (Rp.30000) -100 halaman
-    $str = "komik : {$this->judul} | 
+    $str = "{$this->judul} | 
     {$this->getlabel()}  (Rp. {$this->harga})";
 
 
@@ -38,6 +34,19 @@ class Produk {
 }
 
 class komik extends Produk{
+    public $jmlhalaman;
+
+    public function __construct($judul = "judul",
+    $penulis = "penulis" , $penerbit = "penerbit", 
+    $harga = 0, $jmlhalaman = 0 ) {
+
+        parent::__construct( $judul ,
+        $penulis  , $penerbit , 
+        $harga );
+
+        $this->jmlhalaman = $jmlhalaman;
+    }
+    
     public function getinfoproduk()
     {
         $str = "komik :" . parent::getinfoproduk() ."  - {$this->jmlhalaman} Halaman.";
@@ -47,10 +56,20 @@ class komik extends Produk{
 }
 
 class game extends Produk{
+    public $waktumain;
+
+    public function __construct($judul = "judul",
+    $penulis = "penulis" , $penerbit = "penerbit", 
+    $harga = 0, $waktumain = 0) {
+    parent::__construct($judul ,
+    $penulis , $penerbit , 
+    $harga);
+        
+        $this->waktumain = $waktumain;
+    }
     public function getinfoproduk()
     {
-        $str = "game : {$this->judul} | 
-        {$this->getlabel()}  (Rp. {$this->harga}) - 
+        $str = "game : " . parent :: getinfoproduk() ." - 
         {$this->waktumain} Jam.";
         return $str;
     }
@@ -72,8 +91,8 @@ class game extends Produk{
 
 // alur pruduct>__construct>getLabel>echo
 
-$produk1 = new komik("Naruto", "masasi kisimoto", "shoen jump", 30000, 100, 0);
-$produk2 = new game("Uncharted", "Neil Druckman", "sony computer", 25000, 0, 50);
+$produk1 = new komik("Naruto", "masasi kisimoto", "shoen jump", 30000, 100);
+$produk2 = new game("Uncharted", "Neil Druckman", "sony computer", 25000, 50);
 
 // Komik:masasi kisimoto, shoen jump,
 // Game :Neil Druckman, sony computer,
