@@ -30,6 +30,7 @@ function coba(){
 }
 echo coba();
 echo "<hr>";
+
 // __CLASS__ (class)
 
 class Coba1 {
