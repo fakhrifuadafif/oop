@@ -25,7 +25,6 @@ echo "<hr>";
 
 
 class contoh {
-
     public static $int = 1;
     public function halo() {
         return "Halo " . self::$int++ . " kali. <br>";
